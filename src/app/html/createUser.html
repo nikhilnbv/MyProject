@@ -1,0 +1,193 @@
+<div class="container" style="width:100%;padding-top:15px;">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-target="#createUserCollapse">User Registration</a>
+                </h4>
+            </div>
+            <div id="createUserCollapse" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <form class="well form-horizontal" (ngSubmit)="createUser()" data-toggle="validator" role="form" method="post" id="contact_form"
+                        novalidate>
+                        <fieldset>
+                            <legend>User Registration</legend>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">First Name</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input required id="First Name" name="firstName" [(ngModel)]="model.firstName" placeholder="First Name" class="form-control"
+                                            type="text">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Last Name</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input required id="Last Name" name="lastName" [(ngModel)]="model.lastName" placeholder="Last Name" class="form-control"
+                                            type="text">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">User Name</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input required id="User Name" name="userName" [(ngModel)]="model.userName" placeholder="User Name" class="form-control"
+                                            type="text">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Password</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input name="password" id="Password" [(ngModel)]="model.password" placeholder="Password" class="form-control" type="password">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Confirm Password</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input name="confirmPassword" id="Confirm Password" [(ngModel)]="model.confirmPassword" placeholder="Confirm Password" class="form-control"
+                                            type="password">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Role</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <!--<span class="input-group-addon"></span>-->
+                                        <!--<input name="role" id="Role" [(ngModel)]="model.role" placeholder="Role" class="form-control" type="text">-->
+                                        <span class="input-group-addon"></span>
+                                        <select name="role" id="Role" [(ngModel)]="model.role" class="form-control" >                                            
+                                            <option value="admin">Admin</option>
+                                            <option value="trainer">Trainer</option>
+                                            <option value="trainee">Trainee</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Button -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label"></label>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-info">Create User </button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" (click)="viewUsers()" href="#userDetailsCollapse">User Details</a>
+                </h4>
+            </div>
+            <div id="userDetailsCollapse" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="col-sm-12">
+                        <input id="searchuser" name="searchUser" [(ngModel)]="model.searchUser" (keyup)="search()" placeholder="Enter Search Criteria"
+                            class="form-control" type="text">
+                    </div>
+
+                    <hr/>
+                    <!--<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>User Name</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>User Name</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                           
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr *ngFor="let user of users">
+                          
+                            <td #uid>{{user.firstname}}</td>
+                            <td>{{user.lastname}}</td>
+                            <td #uname contenteditable='true' (blur)="updateUserName(uname.innerText,uid.innerText)">{{user.username}}</td>
+                            <td>{{user.role}}</td>
+                            <td contenteditable='true' *ngIf="user.isactive==1" (click)="updateStatus(uname.innerText)">Active</td>
+                            <td contenteditable='true' *ngIf="user.isactive!=1" (click)="updateStatus(uname.innerText)">InActive</td>
+                           
+                        </tr>
+                    </tbody>
+                </table>-->
+
+                    <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%" [mfData]="users" #mf="mfDataTable"
+                        [mfRowsOnPage]="5">
+                        <thead>
+                            <tr>
+                                <th> <mfDefaultSorter by="firstname">First Name</mfDefaultSorter></th>
+                                <th>Last Name</th>
+                                <th>User Name</th>
+                                <th><mfDefaultSorter by="role">Role</mfDefaultSorter></th>
+                                <th>Status</th>
+                                <!--<th>Action</th>-->
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr *ngFor="let user of mf.data">
+                                <!--<td #uid>{{user.firstname+' '+user.lastname}}</td>-->
+                                <td #uid>{{user.firstname}}</td>
+                                <td>{{user.lastname}}</td>
+                                <!--<td #uname contenteditable='true' (blur)="updateUserName(uname.innerText,uid.innerText)">{{user.username}}</td>-->
+                                <td><input #uname contenteditable='true' (change)="updateUserName(uname.value,uid.innerText)" value={{user.username}}></td>
+                                <td contenteditable='true' (click)="updateRole(uname.value)">{{user.role}}</td>
+                                <td contenteditable='true' *ngIf="user.isactive==1" (click)="updateStatus(uname.value)">Active</td>
+                                <td contenteditable='true' *ngIf="user.isactive!=1" (click)="updateStatus(uname.value)">InActive</td>
+                                <!--<td><input type="button" value="De-activate" *ngIf="user.isactive==1" /> </td>-->
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

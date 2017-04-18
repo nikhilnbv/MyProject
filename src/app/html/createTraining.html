@@ -1,0 +1,116 @@
+ <div class="container" style="width:100%;padding-top:15px;">
+    <div class="panel-group">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-target="#createTrainingCollapse">Schedule Training</a>
+            </h4>
+        </div>
+        <div id="createTrainingCollapse" class="panel-collapse collapse">
+            <div class="panel-body">
+            <form class="well form-horizontal" (ngSubmit)="createUser()" data-toggle="validator" role="form" method="post"  id="contact_form" novalidate>
+                        <fieldset>
+                        <legend>Create Training</legend>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Title</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input required name="trainingtitle" [(ngModel)]="model.trainingtitle" placeholder="Title" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" >Category</label> 
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input required name="category" [(ngModel)]="model.category" placeholder="Category" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Target Audience</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input required name="audience" [(ngModel)]="model.audience" placeholder="Target Audience" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+                            
+                        <div class="form-group">
+                        <label class="col-md-3 control-label">Trainer</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input name="trainer" [(ngModel)]="model.trainer" placeholder="Trainer" class="form-control" type="text">
+                                </div>
+                        </div>
+                        </div>
+                            
+                        <div class="form-group">
+                        <label class="col-md-3 control-label">Start Time</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input name="confirmPassword" [(ngModel)]="model.confirmPassword" placeholder="Confirm Password" class="form-control" type="password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                        <label class="col-md-3 control-label">End Time</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input name="role" [(ngModel)]="model.role" placeholder="Role" class="form-control"  type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                        <label class="col-md-3 control-label">Location</label>  
+                            <div class="col-md-8 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"></span>
+                                    <input name="role" [(ngModel)]="model.role" placeholder="Role" class="form-control"  type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-info">Create User </button>
+                            </div>
+                        </div>
+
+                        </fieldset>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="width:100%;">
+    <div class="panel-group">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" href="#trainingListCollapse">Training Details</a>
+            </h4>
+        </div>
+        <div id="trainingListCollapse" class="panel-collapse collapse">
+            <div class="panel-body">
+            
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
