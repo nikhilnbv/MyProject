@@ -1,99 +1,126 @@
- <div class="container" style="width:100%;padding-top:15px;">
+<div class="container" style="width:100%;padding-top:15px;">
     <div class="panel-group">
         <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-            <a data-toggle="collapse" data-target="#createTrainingCollapse">Schedule Training</a>
-            </h4>
-        </div>
-        <div id="createTrainingCollapse" class="panel-collapse collapse">
-            <div class="panel-body">
-            <form class="well form-horizontal" (ngSubmit)="createUser()" data-toggle="validator" role="form" method="post"  id="contact_form" novalidate>
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-target="#createTrainingCollapse">Schedule Training</a>
+                </h4>
+            </div>
+            <div id="createTrainingCollapse" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <form class="well form-horizontal" (ngSubmit)="createTraining()" data-toggle="validator" role="form" method="post" id="contact_form"
+                        novalidate>
                         <fieldset>
-                        <legend>Create Training</legend>
+                            <legend>Create Training</legend>
 
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Title</label>  
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input required name="trainingtitle" [(ngModel)]="model.trainingtitle" placeholder="Title" class="form-control" type="text">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Title</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input required name="trainingtitle" id="trainingtitle" [(ngModel)]="model.trainingtitle" placeholder="Title" class="form-control" type="text">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" >Category</label> 
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input required name="category" [(ngModel)]="model.category" placeholder="Category" class="form-control" type="text">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Department</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <select name="department" id="department" [(ngModel)]="model.department" class="form-control">                                            
+                                            <option value="engineering">Engineering</option>
+                                            <option value="support">Support</option>
+                                            <option value="testing">Testing</option>
+                                            <option value="hr">Human Resource</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Target Audience</label>  
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input required name="audience" [(ngModel)]="model.audience" placeholder="Target Audience" class="form-control" type="text">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Target Audience</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <select name="audience" id="audience" [(ngModel)]="model.audience" class="form-control">                                            
+                                            <option value="openforall">Open for All</option>
+                                            <option value="projectspecific">Project Specific</option>
+                                            <option value="resourcepool">Resource Pool</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                            
-                        <div class="form-group">
-                        <label class="col-md-3 control-label">Trainer</label>  
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input name="trainer" [(ngModel)]="model.trainer" placeholder="Trainer" class="form-control" type="text">
-                                </div>
-                        </div>
-                        </div>
-                            
-                        <div class="form-group">
-                        <label class="col-md-3 control-label">Start Time</label>  
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input name="confirmPassword" [(ngModel)]="model.confirmPassword" placeholder="Confirm Password" class="form-control" type="password">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                        <label class="col-md-3 control-label">End Time</label>  
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input name="role" [(ngModel)]="model.role" placeholder="Role" class="form-control"  type="text">
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Trainer</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <select name="trainer" id="trainer" [(ngModel)]="model.trainer" class="form-control">                                            
+                                            <option value="nikhil">Nikhil</option>
+                                            <option value="hiren">Hiren</option>
+                                            <option value="krunal">Krunal</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                        <label class="col-md-3 control-label">Location</label>  
-                            <div class="col-md-8 inputGroupContainer">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input name="role" [(ngModel)]="model.role" placeholder="Role" class="form-control"  type="text">
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Date</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input name="tdate" id="tdate" [(ngModel)]="model.tdate" placeholder="Training Date" class="form-control" type="date">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Button -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label"></label>
-                            <div class="col-md-4">
-                                <button type="submit" class="btn btn-info">Create User </button>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Start Time</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input name="startTime" id="startTime" [(ngModel)]="model.startTime" placeholder="Start Time" class="form-control" type="time">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">End Time</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input name="endTime" id="endTime" [(ngModel)]="model.endTime" placeholder="End Time" class="form-control" type="time">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Location</label>
+                                <div class="col-md-8 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input name="location" id="location" [(ngModel)]="model.location" placeholder="Location" class="form-control" type="text">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Button -->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label"></label>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-info">Schedule Training </button>
+                                </div>
+                            </div>
 
                         </fieldset>
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
         </div>
     </div>
 </div>
@@ -101,16 +128,61 @@
 <div class="container" style="width:100%;">
     <div class="panel-group">
         <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-            <a data-toggle="collapse" href="#trainingListCollapse">Training Details</a>
-            </h4>
-        </div>
-        <div id="trainingListCollapse" class="panel-collapse collapse">
-            <div class="panel-body">
-            
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#trainingListCollapse">Training Details</a>
+                </h4>
             </div>
-        </div>
+            <div id="trainingListCollapse" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="col-sm-12">
+                        <input id="searchTraining" name="searchTraining" [(ngModel)]="model.searchTraining" (keyup)="search()" placeholder="Enter Search Criteria"
+                            class="form-control" type="text">
+                    </div>
+
+                    <hr/>
+                   
+                    <table id="viewTraining" class="table table-striped table-bordered" cellspacing="0" width="100%" [mfData]="trainings" #mf="mfDataTable"
+                        [mfRowsOnPage]="5">
+                        <thead>
+                            <tr>
+                                <th><mfDefaultSorter by="title">Training Title</mfDefaultSorter></th>
+                                <th>Department</th>
+                                <th>Target Audience</th>
+                                <th>Trainer</th>
+                                <th><mfDefaultSorter by="date">Date</mfDefaultSorter></th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <!--<th>Action</th>-->
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <td colspan="9">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr *ngFor="let trainingdata of mf.data">
+                                <td> {{trainingdata.title}}</td>
+                                <td>{{trainingdata.department}}</td>                               
+                                <td>{{trainingdata.audience}}</td>     
+                                <td>{{trainingdata.trainer}}</td>                                                         
+                                <td>{{trainingdata.date}}</td>
+                                <td>{{trainingdata.start_time}}</td>
+                                <td>{{trainingdata.end_time}}</td>
+                                <td>{{trainingdata.location}}</td>
+                                <td *ngIf="trainingdata.isCompleted==1">Completed</td>
+                                <td *ngIf="trainingdata.isCompleted!=1">Incomplete</td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>

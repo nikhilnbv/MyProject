@@ -3,8 +3,6 @@ import { UserService } from '../services/userService';
 
 import '../scripts/jquery-3.2.0.min.js';
 import '../scripts/bootstrap-3.3.7.min.js';
-import '../scripts/formValidation.js';
-import '../scripts/validator.js';
 
 import "../scripts/myValidation.js";
 
@@ -50,6 +48,7 @@ export class CreateUserComponent{
 			      err => console.error(err),
 			      () => {                  
                     myExtObject.createUserSuccess();
+                    this.viewUsers();
                     console.log('success..');
             }
 		  );

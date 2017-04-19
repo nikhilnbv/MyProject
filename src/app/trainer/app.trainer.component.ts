@@ -2,16 +2,27 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { LoginService } from '../services/loginService';
 import { Router } from '@angular/router';
 import { routes } from '../services/app.router';
+import { ManageTrainingComponent } from '../trainer/manageTraining.component';
+import DynamicComponent from '../app.dynamic.component';
+
+import { TrainingService } from '../services/trainingService';
 
 @Component({
     selector:'app-trainer',
     templateUrl:'../html/template.html',
+    entryComponents: [ManageTrainingComponent], 
     styleUrls:['../styles/template.css']
 })
 
 export class TrainerComponent implements OnInit {
 
-    constructor(private loginService : LoginService,private router: Router,private _elementRef : ElementRef) {
+    userName : any;
+    trainings : any[] = [];
+    componentData = null;
+
+    constructor(private loginService : LoginService,private router: Router,private _elementRef : ElementRef,
+    private trainingService : TrainingService) {
+        this.userName = localStorage.getItem('currentUserName');
     }
 
     ngOnInit(){
@@ -28,4 +39,14 @@ export class TrainerComponent implements OnInit {
         this.loginService.logout();
         this.router.navigate(['/login']);
     }
+
+    manageUserScreen(){
+        this.componentData = {
+            component: ManageTrainingComponent,
+             inputs: {
+                showNum: 9
+            }        
+        };
+    }
+    
 }

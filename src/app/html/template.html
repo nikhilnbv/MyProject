@@ -11,7 +11,6 @@
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-target="#dropdown" data-toggle="dropdown-menu"  aria-haspopup="true" aria-expanded="true">
                     <!--<span class="glyphicon glyphicon-user" aria-hidden="true"></span> -->                    
                     <a (click)="logout()">Logout</a>
-                    <span class="caret"></span>
                 </button>
                 <ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenu">
                     <li><a (click)="logout()">Logout</a></li>
@@ -28,8 +27,8 @@
                     <a class="list-group-item active" (click)="manageTraining()">Manage Training</a>
                 </div>
                 <div id="trainerLinks" class="list-group">
-                    <a class="list-group-item active">Trainer function 1</a>
-                    <a class="list-group-item active">Trainer function 2</a>
+                    <a class="list-group-item active" (click)="manageUserScreen()">My Trainings</a>
+                    <!--<a class="list-group-item active">Trainer function 2</a>-->
                 </div>
                 <div id="traineeLinks" class="list-group">
                     <a class="list-group-item active">Trainee function 1</a>

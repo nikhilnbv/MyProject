@@ -7,7 +7,7 @@ const config = {
     port : 3306,
     user : 'root',
     password: 'root',
-    database: 'dbtms'
+    database: 'tms'
 };
 
 var connection = mysql.createConnection(config);
@@ -204,5 +204,116 @@ router.post('/updateRole',function(req, res, next){
         }
     });
 });
+
+router.post('/createTraining',function(req, res, next){
+
+    console.log("inside create Trainer ");
+
+    connection.query(
+      'insert into training values("' 
+      + req.param("trainingtitle") + '","'
+      + req.param("department") + '","' 
+      + req.param("audience") + '","' 
+      + req.param("trainer") + '","' 
+      + req.param("tdate") + '","'       
+      + req.param("startTime") + '","'
+      + req.param("endTime") + '","'
+      + req.param("location") + '", false)' 
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result + ' inserted');
+            connection.query(
+                'select * from training' 
+                        ,function(err,result){
+                        if(err) { 
+                            console.log(err);
+                        }
+                        else{
+                            console.log(result + ' selected');
+                            res.send(result);            
+                        }
+                        });            
+        }
+    });
+});
+
+router.get('/viewTraining',function(req, res, next){
+    console.log("inside viewTraining ");
+
+    connection.query(
+      'select * from training' 
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result + ' selected');
+            res.send(result);            
+        }
+    });
+});
+
+router.post('/searchTraining',function(req, res, next){
+    console.log("inside searchTraining " + req.param('searchT'));
+
+    connection.query(
+      'select * from training where title like "%' + req.param('searchT') + '%"'
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result.length + ' selected');
+            res.send(result);
+            /*if(result[0].count>0){
+                console.log("true efdfdfdf");
+            }else{
+                console.log("false sdfsfsfsf");
+            }*/
+        }
+    });
+});
+
+
+router.post('/viewMyTraining',function(req, res, next){
+    console.log("inside viewMyTraining "+req.param('userName'));
+
+    connection.query(
+      'select * from training where trainer = "' + req.param('userName') + '" and is_completed = false' 
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result + ' selected');
+            res.send(result);            
+        }
+    });
+});
+
+router.post('/searchMyTraining',function(req, res, next){
+    console.log("inside searchTraining " + req.param('searchT'));
+
+    connection.query(
+      'select * from training where trainer = "' + req.param('userName') + '" and title like "%' + req.param('searchT') + '%"'
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result.length + ' selected');
+            res.send(result);
+            /*if(result[0].count>0){
+                console.log("true efdfdfdf");
+            }else{
+                console.log("false sdfsfsfsf");
+            }*/
+        }
+    });
+});
+
 module.exports = users;
 module.exports = router;

@@ -1,0 +1,46 @@
+<br>
+<div class="col-sm-12">
+    <input id="searchTraining" name="searchTraining" [(ngModel)]="model.searchTraining" (keyup)="search()" placeholder="Enter Search Criteria"
+        class="form-control" type="text">
+</div>
+
+<hr/>
+
+<table id="viewTraining" class="table table-striped table-bordered" cellspacing="0" width="100%" [mfData]="trainings" #mf="mfDataTable"
+    [mfRowsOnPage]="5">
+    <thead>
+        <tr>
+            <th><mfDefaultSorter by="title">Training Title</mfDefaultSorter></th>
+            <th>Department</th>
+            <th>Target Audience</th>
+            <th>Trainer</th>
+            <th><mfDefaultSorter by="date">Date</mfDefaultSorter></th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Location</th>
+            <th>Status</th>
+            <!--<th>Action</th>-->
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="9">
+                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr *ngFor="let trainingdata of mf.data">
+            <td> {{trainingdata.title}}</td>
+            <td>{{trainingdata.department}}</td>                               
+            <td>{{trainingdata.audience}}</td>     
+            <td>{{trainingdata.trainer}}</td>                                                         
+            <td>{{trainingdata.date}}</td>
+            <td>{{trainingdata.start_time}}</td>
+            <td>{{trainingdata.end_time}}</td>
+            <td>{{trainingdata.location}}</td>
+            <td *ngIf="trainingdata.isCompleted==1">Completed</td>
+            <td *ngIf="trainingdata.isCompleted!=1">Incomplete</td>                                
+        </tr>
+    </tbody>
+</table>

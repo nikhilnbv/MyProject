@@ -80,6 +80,7 @@ var myExtObject = (function() {
     takeRole()
     {
       var status = prompt("Please enter role,", "1 for Admin, 2 for Trainer, 3 for Trainee");
+      alert(status);
       if(status == "1")
         return 'admin';
       else if(status == "2")
@@ -93,3 +94,80 @@ var myExtObject = (function() {
   }
 
 })(myExtObject||{})
+
+
+
+var myExtObjectForTraining = (function() {
+
+  return {
+    createTrainingSuccess: function() {
+      alert('Trainig scheduled successfully.');
+
+      document.getElementById('trainingtitle').value='';
+      document.getElementById('department').value='';
+      document.getElementById('audience').value='';
+      document.getElementById('trainer').value='';
+      document.getElementById('tdate').value='';
+      document.getElementById('startTime').value='';
+      document.getElementById('endTime').value='';
+      document.getElementById('location').value='';
+    },
+
+    validateTraining: function() {    
+      
+      if(document.getElementById("trainingtitle").value=='')
+      {
+        document.getElementById("trainingtitle").focus=true;
+        alert("Training Title required");  
+        return false;      
+      }
+      if(document.getElementById("department").value=='')
+      {
+        document.getElementById("department").focus=true;
+        alert("Department required");  
+        return false;      
+      }
+      if(document.getElementById("audience").value=='')
+      {
+        document.getElementById("audience").focus=true;
+        alert("Target Audience required");  
+        return false;      
+      }
+      if(document.getElementById("trainer").value=='')
+      {
+        document.getElementById("trainer").focus=true;
+        alert("Trainer required");  
+        return false;      
+      }
+      if(document.getElementById("tdate").value=='')
+      {
+        document.getElementById("tdate").focus=true;
+        alert("Training Date required");  
+        return false;      
+      }
+      if((document.getElementById("startTime").value)=='')
+      {
+        document.getElementById("startTime").focus=true;
+        alert("Start Time required");  
+        return false;      
+      }
+      if((document.getElementById("endTime").value)=='')
+      {
+        document.getElementById("endTime").focus=true;
+        alert("End Time required");  
+        return false;      
+      }
+      if((document.getElementById("location").value)=='')
+      {
+        document.getElementById("location").focus=true;
+        alert("Location required");  
+        return false;      
+      }
+      return true;
+    }
+
+  }
+
+})(myExtObject||{})
+
+

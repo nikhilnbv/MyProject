@@ -1,6 +1,7 @@
 import {Component, Input, ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver} from '@angular/core';
 import { CreateUserComponent } from './admin/createuser.component';
 import { CreateTrainingComponent } from './admin/createTraining.component';
+import { ManageTrainingComponent } from './trainer/manageTraining.component';
 
 @Component({
   selector: 'dynamic-component',
