@@ -210,7 +210,7 @@ router.post('/createTraining',function(req, res, next){
     console.log("inside create Trainer ");
 
     connection.query(
-      'insert into training values("' 
+      'insert into training(title,department,audience,trainer,date,start_time,end_time,location,is_completed) values("' 
       + req.param("trainingtitle") + '","'
       + req.param("department") + '","' 
       + req.param("audience") + '","' 
@@ -311,6 +311,61 @@ router.post('/searchMyTraining',function(req, res, next){
             }else{
                 console.log("false sdfsfsfsf");
             }*/
+        }
+    });
+});
+
+router.get('/fetchTrainerList',function(req, res, next){
+    console.log("inside fetchTrainerList ");
+
+    connection.query(
+      'select username from users where role = "trainer"'
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result.length + ' selected');
+            res.send(result);
+            /*if(result[0].count>0){
+                console.log("true efdfdfdf");
+            }else{
+                console.log("false sdfsfsfsf");
+            }*/
+        }
+    });
+});
+
+router.post('/addScenario',function(req, res, next){
+
+    console.log("inside create Trainer ");
+
+    connection.query(
+      'insert into scenario (scenario_name, iscovered, training_id) values("'
+       + req.param("content") + '", false ,"' + req.param("trainingId") + '")' 
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result + ' inserted');
+            res.send(result);         
+        }
+    });
+});
+
+router.post('/viewScenario',function(req, res, next){
+    console.log("inside viewScenario ");
+
+    connection.query(
+      'select * from scenario where training_id = "' + req.param("trainingId") + '"'
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result + ' selected');
+            res.send(result);            
         }
     });
 });

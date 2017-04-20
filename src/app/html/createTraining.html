@@ -59,9 +59,9 @@
                                     <div class="input-group">
                                         <span class="input-group-addon"></span>
                                         <select name="trainer" id="trainer" [(ngModel)]="model.trainer" class="form-control">                                            
-                                            <option value="nikhil">Nikhil</option>
-                                            <option value="hiren">Hiren</option>
-                                            <option value="krunal">Krunal</option>
+                                            <option *ngFor="let trainer of trainers" value="{{trainer.username}}">{{trainer.username}}</option>
+                                            <!--<option value="hiren">Hiren</option>
+                                            <option value="krunal">Krunal</option>-->
                                         </select>
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                         [mfRowsOnPage]="5">
                         <thead>
                             <tr>
-                                <th><mfDefaultSorter by="title">Training Title</mfDefaultSorter></th>
+                                <th><mfDefaultSorter by="title">Title</mfDefaultSorter></th>
                                 <th>Department</th>
                                 <th>Target Audience</th>
                                 <th>Trainer</th>
@@ -167,7 +167,8 @@
                         </tfoot>
                         <tbody>
                             <tr *ngFor="let trainingdata of mf.data">
-                                <td> {{trainingdata.title}}</td>
+                                <td><a (click)="viewScenario(training_id.value)"> {{trainingdata.title}}</a><input #training_id type="hidden" value='{{trainingdata.training_id}}'/></td>
+                                <!--<td> {{trainingdata.title}}</td>-->
                                 <td>{{trainingdata.department}}</td>                               
                                 <td>{{trainingdata.audience}}</td>     
                                 <td>{{trainingdata.trainer}}</td>                                                         
@@ -180,7 +181,7 @@
                             </tr>
                         </tbody>
                     </table>
-
+                    <span defaultOverlayTarget></span>
                 </div>
             </div>
         </div>

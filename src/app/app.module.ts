@@ -23,10 +23,16 @@ import { TrainingService } from './services/trainingService';
 import { routing }        from './services/app.router';
 import { AuthGuard } from './guard/authGuard';
 
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+import { MyModal } from './myModal.component';
+import { ViewScenarioComponent} from './trainer/viewScenarioModal.component';
+
 @NgModule({
   declarations: [
     AppComponent, LoginComponent, AdminComponent, CreateUserComponent, UserDetailComponent,DynamicComponent,
-     TrainerComponent, TraineeComponent, CreateTrainingComponent, ManageTrainingComponent
+     TrainerComponent, TraineeComponent, CreateTrainingComponent, ManageTrainingComponent, MyModal,
+     ViewScenarioComponent
   ],
 
   imports: [
@@ -34,9 +40,13 @@ import { AuthGuard } from './guard/authGuard';
     FormsModule,
     HttpModule, 
     routing,
-    DataTableModule
+    DataTableModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule
   ],
   providers: [LoginService,AuthGuard,UserService,TrainingService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ MyModal, ViewScenarioComponent ]
+   
 })
 export class AppModule { }

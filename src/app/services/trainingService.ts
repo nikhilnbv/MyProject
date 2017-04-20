@@ -23,6 +23,11 @@ export class TrainingService {
                 .map((resp: Response) => resp.json());
     }
 
+    fetchTrainerList(){
+        return this.http.get('http://localhost:3000/users/fetchTrainerList')
+                .map((resp: Response) => resp.json());
+    }
+
     /* Admin functionality */    
     searchTraining(searchText:any)
     {
@@ -38,10 +43,24 @@ export class TrainingService {
         return this.http.post('http://localhost:3000/users/viewMyTraining',username)
                 .map((resp: Response) => resp.json());
     }
-
+    
+    /* Trainer functionality */
     searchMyTraining(searchText:any)
     {
         return this.http.post('http://localhost:3000/users/searchMyTraining',searchText)
+                .map((resp: Response) => resp.json());
+    }
+
+    /* Trainer functionality */    
+    addScenario(scenarioData:any){
+         console.log(scenarioData);
+         return this.http.post('http://localhost:3000/users/addScenario', scenarioData)
+                .map((resp: Response) => resp.json());
+    }
+
+     viewScenario(scenarioData:any){
+         console.log(scenarioData);
+         return this.http.post('http://localhost:3000/users/viewScenario', scenarioData)
                 .map((resp: Response) => resp.json());
     }
 }

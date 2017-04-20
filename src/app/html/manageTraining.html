@@ -10,16 +10,16 @@
     [mfRowsOnPage]="5">
     <thead>
         <tr>
-            <th><mfDefaultSorter by="title">Training Title</mfDefaultSorter></th>
+            <th><mfDefaultSorter by="title">Title</mfDefaultSorter></th>
             <th>Department</th>
             <th>Target Audience</th>
-            <th>Trainer</th>
+            <!--<th>Trainer</th>-->
             <th><mfDefaultSorter by="date">Date</mfDefaultSorter></th>
             <th>Start Time</th>
             <th>End Time</th>
             <th>Location</th>
             <th>Status</th>
-            <!--<th>Action</th>-->
+            <th>Action</th>
         </tr>
     </thead>
     <tfoot>
@@ -31,16 +31,23 @@
     </tfoot>
     <tbody>
         <tr *ngFor="let trainingdata of mf.data">
-            <td> {{trainingdata.title}}</td>
+            <td><a (click)="viewScenario(training_id.value)"> {{trainingdata.title}}</a><input #training_id type="hidden" value='{{trainingdata.training_id}}'/></td>
             <td>{{trainingdata.department}}</td>                               
             <td>{{trainingdata.audience}}</td>     
-            <td>{{trainingdata.trainer}}</td>                                                         
+            <!--<td>{{trainingdata.trainer}}</td>                                                         -->
             <td>{{trainingdata.date}}</td>
             <td>{{trainingdata.start_time}}</td>
             <td>{{trainingdata.end_time}}</td>
             <td>{{trainingdata.location}}</td>
             <td *ngIf="trainingdata.isCompleted==1">Completed</td>
             <td *ngIf="trainingdata.isCompleted!=1">Incomplete</td>                                
+            <td *ngIf="trainingdata.isCompleted!=1">
+                <input type="button" value="Add Scenario" (click)="addScenario(training_id.value)" />
+                
+            </td>                                
         </tr>
     </tbody>
 </table>
+<span defaultOverlayTarget></span>
+
+
