@@ -34,16 +34,16 @@
             <td><a (click)="viewScenario(training_id.value)"> {{trainingdata.title}}</a><input #training_id type="hidden" value='{{trainingdata.training_id}}'/></td>
             <td>{{trainingdata.department}}</td>                               
             <td>{{trainingdata.audience}}</td>     
-            <!--<td>{{trainingdata.trainer}}</td>                                                         -->
+            <!--<td>{{trainingdata.trainer}}</td> -->
             <td>{{trainingdata.date}}</td>
             <td>{{trainingdata.start_time}}</td>
             <td>{{trainingdata.end_time}}</td>
             <td>{{trainingdata.location}}</td>
-            <td *ngIf="trainingdata.isCompleted==1">Completed</td>
-            <td *ngIf="trainingdata.isCompleted!=1">Incomplete</td>                                
-            <td *ngIf="trainingdata.isCompleted!=1">
-                <input type="button" value="Add Scenario" (click)="addScenario(training_id.value)" />
-                
+            <td *ngIf="trainingdata.is_completed==1">Completed</td>
+            <td *ngIf="trainingdata.is_completed==1"></td>
+            <td *ngIf="trainingdata.is_completed!=1"><a (click)="updateTrainingStatus(training_id.value)">Incomplete</a></td>                                
+            <td *ngIf="trainingdata.is_completed!=1">
+                <input type="button" value="Add Scenario" (click)="addScenario(training_id.value)" />                
             </td>                                
         </tr>
     </tbody>

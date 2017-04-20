@@ -63,4 +63,17 @@ export class TrainingService {
          return this.http.post('http://localhost:3000/users/viewScenario', scenarioData)
                 .map((resp: Response) => resp.json());
     }
+
+    updateTrainingStatus(trainingdata:any){
+         console.log(trainingdata);
+         return this.http.post('http://localhost:3000/users/updateTrainingStatus', trainingdata)
+                .map((resp: Response) => resp.json());
+    }
+
+    updateScenarioStatus(scenarioData:any){
+         console.log(scenarioData);
+         return this.http.post('http://localhost:3000/users/updateScenarioStatus', scenarioData)
+                .map((resp: Response) => resp.json());
+    }
+
 }

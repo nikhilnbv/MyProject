@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-
 import { DialogRef, ModalComponent, CloseGuard  } from 'angular2-modal';
 import { BSModalContext } from 'angular2-modal/plugins/bootstrap';
 
 import { TrainingService } from '../services/trainingService';
+import "../scripts/myValidation.js";
+
+declare var myExtObjectForTraining: any;
+
 
 export class BaseMyModal extends BSModalContext {
   constructor() {
@@ -56,9 +59,9 @@ export class BaseMyModal extends BSModalContext {
                         </tfoot>
                         <tbody>
                             <tr *ngFor="let scenario of mf.data">
-                                <td>{{scenario.scenario_name}}</td>
-                                <td contenteditable='true' *ngIf="scenario.iscovered==1">Covered</td>
-                                <td contenteditable='true' *ngIf="scenario.iscovered!=1">Not Covered</td>                                
+                                <td>{{scenario.scenario_name}} <input #scenario_id type="hidden" value='{{scenario.scenario_id}}'/></td>
+                                <td  *ngIf="scenario.iscovered==1"><a (click)="updateScenarioStatus(scenario_id.value)">Covered</a></td>
+                                <td  *ngIf="scenario.iscovered!=1"><a (click)="updateScenarioStatus(scenario_id.value)">Not Covered</a></td>                                
                             </tr>
                         </tbody>
                     </table>
@@ -94,11 +97,8 @@ export class ViewScenarioComponent implements  CloseGuard, ModalComponent<BSModa
   } 
 
   viewScenario(){
-      
-    /*if(myExtObjectForTraining.validateTraining())
-    {*/
         this.trainingId = localStorage.getItem('currentTrainingId');
-        //localStorage.removeItem('currentTrainingId');
+      
         console.log("hello" + this.model.scenario+"    "+this.trainingId);
         
         this.scenarioData = {            
@@ -118,8 +118,23 @@ export class ViewScenarioComponent implements  CloseGuard, ModalComponent<BSModa
                     
             }
         );
-    //}
   }
   
+    updateScenarioStatus(scenarioid)
+    {      
+      var status = myExtObjectForTraining.takeScenarioStatus();    
+        let scenariodata = {
+            'status' : status,
+            'scenario_id' : scenarioid
+          };
+
+        this.trainingService.updateScenarioStatus(scenariodata).subscribe(
+      			data => { console.log(data);
+                this.scenarios=data;
+          },
+			      err => console.error(err),
+			      () => console.log('success..')
+		  );      
+    }
   
 }

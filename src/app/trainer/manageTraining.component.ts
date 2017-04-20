@@ -9,7 +9,7 @@ import { Overlay, overlayConfigFactory } from 'angular2-modal';
 
 import "../scripts/myValidation.js";
 
-//declare var myExtObject: any;
+declare var myExtObjectForTraining: any;
 
 @Component({
     selector: 'manage-training',
@@ -84,6 +84,23 @@ export class ManageTrainingComponent implements OnInit{
          //this.modal.open(MyModal, new BaseMyModal());
          localStorage.setItem('currentTrainingId', trainingId);
          return this.modal.open(ViewScenarioComponent,  overlayConfigFactory({}, BSModalContext));
+    }
+
+
+    updateTrainingStatus(trainingId){      
+      var status = myExtObjectForTraining.takeTrainingStatus();    
+        let trainingdata = {
+            'status' : status,
+            'training_id' : trainingId
+          };
+
+        this.trainingService.updateTrainingStatus(trainingdata).subscribe(
+      			data => { console.log(data);
+            this.trainings = data;            
+          },
+			      err => console.error(err),
+			      () => console.log('success..')
+		  );      
     }
 
 }

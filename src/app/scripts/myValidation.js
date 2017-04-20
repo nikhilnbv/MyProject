@@ -164,10 +164,29 @@ var myExtObjectForTraining = (function() {
         return false;      
       }
       return true;
-    }
+    },
 
+    takeTrainingStatus : function() {
+       var status = prompt("Please enter status", "1 for Completed, 2 for Incomplete");
+      if(status == "1")
+        return true;
+      else if(status == "2")
+        return false;
+      else
+        return myExtObjectForTraining.takeTrainingStatus();
+    },
+
+    takeScenarioStatus : function() {
+      var status = prompt("Please enter status", "1 for Covered, 2 for Not Covered");
+      if(status == "1")
+        return true;
+      else if(status == "2")
+        return false;
+      else
+        return myExtObjectForTraining.takeScenarioStatus();
+    }
   }
 
-})(myExtObject||{})
+})(myExtObjectForTraining||{})
 
 

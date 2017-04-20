@@ -84,25 +84,25 @@ export class CreateUserComponent{
 		  );
     }
 
-  updateUserName(newUser : string,uid : string){
-    console.log("hfhfhfhfhfhfhf " + newUser + "   " + uid);
-    
-    if( myExtObject.validateUserName(newUser,this.users))
-    {
-        let userName1 = {
-            'uName' : newUser,
-            'uId' : uid
-          };
-          
-        this.userService.updateUserName(userName1).subscribe(
-      			data => { console.log(data);
-            this.users = data;            
-          },
-			      err => console.error(err),
-			      () => console.log('success..')
-		  );
-    }  
-  }
+    updateUserName(newUser : string,uid : string){
+      console.log("hfhfhfhfhfhfhf " + newUser + "   " + uid);
+      
+      if( myExtObject.validateUserName(newUser,this.users))
+      {
+          let userName1 = {
+              'uName' : newUser,
+              'uId' : uid
+            };
+            
+          this.userService.updateUserName(userName1).subscribe(
+              data => { console.log(data);
+              this.users = data;            
+            },
+              err => console.error(err),
+              () => console.log('success..')
+        );
+      }  
+    }
 
     updateStatus(uid : string){
       

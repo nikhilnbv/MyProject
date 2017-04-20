@@ -282,7 +282,7 @@ router.post('/viewMyTraining',function(req, res, next){
     console.log("inside viewMyTraining "+req.param('userName'));
 
     connection.query(
-      'select * from training where trainer = "' + req.param('userName') + '" and is_completed = false' 
+      'select * from training where trainer = "' + req.param('userName') + '"' 
       ,function(err,result){
         if(err) { 
             console.log(err);
@@ -366,6 +366,60 @@ router.post('/viewScenario',function(req, res, next){
         else{
             console.log(result + ' selected');
             res.send(result);            
+        }
+    });
+});
+
+router.post('/updateTrainingStatus',function(req, res, next){
+    console.log("inside updateTrainingStatus " + req.param('status'));
+
+    connection.query(
+      'update training set is_completed = ' + req.param('status') + ' where training_id = "' + req.param('training_id') + '"'
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result.length + ' selected');
+            
+            connection.query(
+            'select * from training' 
+            ,function(err,result){
+            if(err) { 
+                console.log(err);
+            }
+            else{
+                console.log(result + ' selected');
+                res.send(result);           
+            }
+        });           
+        }
+    });
+});
+
+router.post('/updateScenarioStatus',function(req, res, next){
+    console.log("inside updateScenarioStatus " + req.param('status'));
+
+    connection.query(
+      'update scenario set iscovered = ' + req.param('status') + ' where scenario_id = "' + req.param('scenario_id') + '"'
+      ,function(err,result){
+        if(err) { 
+            console.log(err);
+        }
+        else{
+            console.log(result.length + ' selected');
+            
+            connection.query(
+            'select * from scenario' 
+            ,function(err,result){
+            if(err) { 
+                console.log(err);
+            }
+            else{
+                console.log(result + ' selected');
+                res.send(result);           
+            }
+        });           
         }
     });
 });
