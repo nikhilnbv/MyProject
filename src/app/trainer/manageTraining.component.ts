@@ -28,7 +28,7 @@ export class ManageTrainingComponent implements OnInit{
     private _elementRef : ElementRef, vcRef: ViewContainerRef, public modal: Modal) {
         
         this.showNum = this.injector.get('showNum');
-        this.userName = localStorage.getItem('currentUserName');
+        this.userName = localStorage.getItem('currentUser');
         this.viewMyTrainings(this.userName);
     }
   
