@@ -28,7 +28,6 @@ export class CreateUserComponent{
   
   validateUserDetails(){
     console.log("Validate form.."); 
-    //if(this._elementRef.nativeElement.querySelector('#txtFirstName')){} 
   }
 
   createUser(){
@@ -43,7 +42,7 @@ export class CreateUserComponent{
             }
             
         this.userService.createUser(this.userData).subscribe(
-      			data => { console.log(data);
+      			data => { 
             console.log(data.affectedRows)},
 			      err => console.error(err),
 			      () => {                  
@@ -57,8 +56,6 @@ export class CreateUserComponent{
   }
 
     viewUsers(){
-      console.log("inside viewUser");
-
       this.userService.viewUsers().subscribe(
       			data => { console.log(data);
             this.users = data;            
@@ -70,13 +67,11 @@ export class CreateUserComponent{
 
     search()
     {
-      console.log("inside SearchUser1" + this.model.searchUser);      
-      
       let searchText = {
           'searchT' : this.model.searchUser
       };
       this.userService.searchUsers(searchText).subscribe(
-      			data => { console.log(data);
+      			data => { 
             this.users = data;            
           },
 			      err => console.error(err),
@@ -85,8 +80,7 @@ export class CreateUserComponent{
     }
 
     updateUserName(newUser : string,uid : string){
-      console.log("hfhfhfhfhfhfhf " + newUser + "   " + uid);
-      
+    
       if( myExtObject.validateUserName(newUser,this.users))
       {
           let userName1 = {
@@ -95,7 +89,7 @@ export class CreateUserComponent{
             };
             
           this.userService.updateUserName(userName1).subscribe(
-              data => { console.log(data);
+              data => { 
               this.users = data;            
             },
               err => console.error(err),
@@ -113,7 +107,7 @@ export class CreateUserComponent{
           };
 
         this.userService.updateStatus(status1).subscribe(
-      			data => { console.log(data);
+      			data => { 
             this.users = data;            
           },
 			      err => console.error(err),
@@ -130,7 +124,7 @@ export class CreateUserComponent{
           };
 
         this.userService.updateRole(role1).subscribe(
-      			data => { console.log(data);
+      			data => { 
             this.users = data;            
           },
 			      err => console.error(err),

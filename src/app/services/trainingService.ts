@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-//import {users} from  'D://Project-Angular/nikhil/myServer/models/loginModel.js';
 
 @Injectable()
 export class TrainingService {
@@ -11,7 +10,6 @@ export class TrainingService {
 
     /* Admin functionality */    
     createTraining(trainingData:any){
-        //Call userCreate webservice method
         console.log(trainingData);
          return this.http.post('http://localhost:3000/users/createTraining',trainingData)
                 .map((resp: Response) => resp.json());

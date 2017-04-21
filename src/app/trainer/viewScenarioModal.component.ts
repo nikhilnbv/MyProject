@@ -22,7 +22,7 @@ export class BaseMyModal extends BSModalContext {
         }
 
         .custom-modal-header {
-            background-color: #219161;
+            background-color: #337ab7;
             color: #fff;
             -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
             -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
@@ -122,19 +122,19 @@ export class ViewScenarioComponent implements  CloseGuard, ModalComponent<BSModa
   
     updateScenarioStatus(scenarioid)
     {      
-      var status = myExtObjectForTraining.takeScenarioStatus();    
+        var status = myExtObjectForTraining.takeScenarioStatus();    
         let scenariodata = {
             'status' : status,
             'scenario_id' : scenarioid
-          };
+            };
 
         this.trainingService.updateScenarioStatus(scenariodata).subscribe(
-      			data => { console.log(data);
+                data => { console.log(data);
                 this.scenarios=data;
-          },
-			      err => console.error(err),
-			      () => console.log('success..')
-		  );      
+            },
+                    err => console.error(err),
+                    () => console.log('success..')
+            );      
     }
   
 }

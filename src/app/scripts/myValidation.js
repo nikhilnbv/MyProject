@@ -80,7 +80,7 @@ var myExtObject = (function() {
     takeRole()
     {
       var status = prompt("Please enter role,", "1 for Admin, 2 for Trainer, 3 for Trainee");
-      alert(status);
+      //alert(status);
       if(status == "1")
         return 'admin';
       else if(status == "2")

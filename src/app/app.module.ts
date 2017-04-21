@@ -8,7 +8,6 @@ import { LoginComponent } from './app.login.component';
 
 import { AdminComponent } from './admin/app.admin.component';
 import { CreateUserComponent } from './admin/createuser.component';
-import { UserDetailComponent } from './admin/userdetail.component';
 import  DynamicComponent  from './app.dynamic.component';
 import { CreateTrainingComponent } from './admin/createTraining.component';
 import { ManageTrainingComponent } from './trainer/manageTraining.component';
@@ -30,7 +29,7 @@ import { ViewScenarioComponent} from './trainer/viewScenarioModal.component';
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, AdminComponent, CreateUserComponent, UserDetailComponent,DynamicComponent,
+    AppComponent, LoginComponent, AdminComponent, CreateUserComponent, DynamicComponent,
      TrainerComponent, TraineeComponent, CreateTrainingComponent, ManageTrainingComponent, MyModal,
      ViewScenarioComponent
   ],

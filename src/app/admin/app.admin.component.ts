@@ -4,7 +4,6 @@ import { LoginService } from '../services/loginService';
 import { Router } from '@angular/router';
 import { routes } from '../services/app.router';
 import { CreateUserComponent } from './createuser.component';
-import { UserDetailComponent } from './userdetail.component';
 import { CreateTrainingComponent } from './createTraining.component';
 import  DynamicComponent  from '../app.dynamic.component';
 
@@ -37,7 +36,6 @@ export class AdminComponent implements OnInit{
     }
 
     manageTraining(){
-       // this._elementRef.nativeElement.querySelector('.nav-content').innerHTML = 
        this.componentData = {
             component: CreateTrainingComponent,
              inputs: {
@@ -47,7 +45,6 @@ export class AdminComponent implements OnInit{
     }
 
     ngOnInit(){
-        //console.log('onInit event called..');
         if(localStorage.getItem('userRole').toString() == "admin")
         {
             this._elementRef.nativeElement.querySelector('#adminLinks').hidden = false;
@@ -57,7 +54,6 @@ export class AdminComponent implements OnInit{
     }
 
     logout() { 
-        //console.log('calling logout');
         this.loginService.logout();
         this.router.navigate(['/login']);
     }

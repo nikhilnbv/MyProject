@@ -34,12 +34,10 @@ export class ManageTrainingComponent implements OnInit{
   
     validateUserDetails(){
         console.log("Validate form.."); 
-        //if(this._elementRef.nativeElement.querySelector('#txtFirstName')){} 
     }
 
 
     viewMyTrainings(userName){
-        //console.log("inside view training");
 
       this.trainingService.viewMyTrainings(userName).subscribe(
       			data => { console.log(data);
@@ -66,10 +64,6 @@ export class ManageTrainingComponent implements OnInit{
 			      err => console.error(err),
 			      () => console.log('success..')
 		  );
-    }
-
-    ngOnInit(){
-    
     }
 
     addScenario(trainingId) 
@@ -101,6 +95,11 @@ export class ManageTrainingComponent implements OnInit{
 			      err => console.error(err),
 			      () => console.log('success..')
 		  );      
+    }
+
+    
+    ngOnInit(){
+    
     }
 
 }

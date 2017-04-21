@@ -34,9 +34,7 @@ export class CreateTrainingComponent{
 
   createTraining(){
     if(myExtObjectForTraining.validateTraining())
-    {
-        console.log("hello" + this.model.tdate);
-        
+    {   
         this.trainingData = {
             'trainingtitle' : this.model.trainingtitle,
             'department' : this.model.department,
@@ -55,9 +53,7 @@ export class CreateTrainingComponent{
             err => console.error(err),
             () => {                  
                     myExtObjectForTraining.createTrainingSuccess();
-                    console.log('traing created successfully..');
                     this.viewTraining();
-                    
             }
         );
     }
@@ -65,7 +61,7 @@ export class CreateTrainingComponent{
 
   fetchTrainerList(){
       this.trainingService.fetchTrainerList().subscribe(
-      			data => { console.log(data);
+      			data => { 
             this.trainers = data;            
           },
 			      err => console.error(err),
@@ -74,10 +70,8 @@ export class CreateTrainingComponent{
     }
 
   viewTraining(){
-      console.log("inside view training");
-
-      this.trainingService.viewTraining().subscribe(
-      			data => { console.log(data);
+    this.trainingService.viewTraining().subscribe(
+      			data => { 
             this.trainings = data;            
           },
 			      err => console.error(err),
@@ -86,14 +80,12 @@ export class CreateTrainingComponent{
     }
 
     search()
-    {
-      console.log("inside SearchUser1" + this.model.searchUser);      
-      
+    {  
       let searchText = {
           'searchT' : this.model.searchTraining
       };
       this.trainingService.searchTraining(searchText).subscribe(
-      			data => { console.log(data);
+      			data => { 
             this.trainings = data;            
           },
 			      err => console.error(err),
@@ -103,7 +95,6 @@ export class CreateTrainingComponent{
 
     viewScenario(trainingId) 
     {
-         //this.modal.open(MyModal, new BaseMyModal());
          localStorage.setItem('currentTrainingId', trainingId);
          return this.modal.open(ViewScenarioComponent,  overlayConfigFactory({}, BSModalContext));
     }

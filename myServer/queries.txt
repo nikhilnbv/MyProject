@@ -1,0 +1,38 @@
+create database tms;
+use tms;
+
+create table users(
+	username varchar(25),
+	password varchar(25),
+	role varchar(10),
+	firstname varchar(25),
+	lastname varchar(25),
+	isactive boolean
+);
+
+insert into users values('nikhil','123456','admin','Nikhil','Vanjara',true);
+
+
+
+create table training(
+	training_id int primary key auto_increment,
+	title varchar(25),
+	department varchar(25),
+	audience varchar(25),
+	date varchar(12),
+	trainer varchar(25),
+	start_time varchar(6),
+	end_time varchar(6),
+	location varchar(25),
+	is_completed boolean
+);
+
+
+
+create table scenario(
+	scenario_id int primary key auto_increment, 
+	scenario_name varchar(1000), 
+	iscovered boolean
+);
+
+alter table scenario add column training_id int references training(training_id);

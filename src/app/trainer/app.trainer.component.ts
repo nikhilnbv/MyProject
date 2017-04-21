@@ -27,7 +27,6 @@ export class TrainerComponent implements OnInit {
 
     ngOnInit(){
         if(localStorage.getItem('userRole').toString() == "trainer"){ 
-            //this.renderer.setElementProperty(this._elementRef.nativeElement.querySelector('#adminSpan1'), 'hidden', false);                            
             this._elementRef.nativeElement.querySelector('#adminLinks').hidden = true;
             this._elementRef.nativeElement.querySelector('#trainerLinks').hidden = false;
             this._elementRef.nativeElement.querySelector('#traineeLinks').hidden = true;
@@ -35,7 +34,6 @@ export class TrainerComponent implements OnInit {
     }
 
     logout() { 
-        //console.log('calling logout');
         this.loginService.logout();
         this.router.navigate(['/login']);
     }

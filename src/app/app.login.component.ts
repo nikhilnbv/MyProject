@@ -21,21 +21,19 @@ export class LoginComponent implements OnInit{
     authenticateUserName: any;
     credentials : any;
     private subject = new Subject<any>();
-    //private router: Router;
     constructor(private loginService : LoginService, private router: Router ) {
         
     }
 
     login() { 
         
-        console.log('calling');
         this.credentials = {
                 'username' : this.model.username,
                 'password' : this.model.password                
             }
 
         this.loginService.authenticate(this.credentials).subscribe(
-			data => { console.log("hahaha" + data);
+			data => { 
                 if(data[0].firstname != "No user found")
                 {
                     this.authenticateFlag = data[0].isactive;
@@ -57,9 +55,7 @@ export class LoginComponent implements OnInit{
     }
 
     onSuccess() {        
-        console.log("sasasasas" + this.authenticateFlag);
         if(this.authenticateFlag){
-            console.log("sasasasas" + this.authenticateRole);
             if(this.authenticateRole=="admin") 
             {
                 localStorage.setItem('currentUser', this.authenticateUserName);    
@@ -84,22 +80,10 @@ export class LoginComponent implements OnInit{
             console.log('No ');
             this.subject.next({ type: 'error', text: "Naa ho pavega.." });
         }
-              
-       /* if(this.loginService.login(this.model.username, this.model.password)){
-            if(this.model.username=="admin")                
-                this.router.navigate(['/admin']);
-            else if(this.model.username=="trainer")
-                this.router.navigate(['/trainer']);
-            else if(this.model.username=="trainee")
-                this.router.navigate(['/trainee']);
-        }
-        else {
-            console.log('No ');
-            this.subject.next({ type: 'error', text: "Naa ho pavega.." });
-        }*/
     }
 
     onFailure(){
+        alert('No user found');
         console.log('No user found');
     }
     

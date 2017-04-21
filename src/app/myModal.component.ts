@@ -19,7 +19,7 @@ export class BaseMyModal extends BSModalContext {
         }
 
         .custom-modal-header {
-            background-color: #219161;
+            background-color: #337ab7;
             color: #fff;
             -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
             -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
@@ -72,31 +72,24 @@ export class MyModal implements  CloseGuard, ModalComponent<BSModalContext> {
 
   addScenario(){
       
-    /*if(myExtObjectForTraining.validateTraining())
-    {*/
-        this.trainingId = localStorage.getItem('currentTrainingId');
-        //localStorage.removeItem('currentTrainingId');
-        console.log("hello" + this.model.scenario+"    "+this.trainingId);
-        
-        this.scenarioData = {
-            'content' : this.model.scenario, 
-            'trainingId' : this.trainingId
+    this.trainingId = localStorage.getItem('currentTrainingId');
+    console.log("hello" + this.model.scenario+"    "+this.trainingId);
+    
+    this.scenarioData = {
+        'content' : this.model.scenario, 
+        'trainingId' : this.trainingId
+    }
+            
+    this.trainingService.addScenario(this.scenarioData).subscribe(
+        data => {
+                console.log(data);                   
+                },
+        err => console.error(err),
+        () => {                  
+                alert('Scenario added successfully..');
+                console.log('scenario added successfully..');
         }
-                
-        this.trainingService.addScenario(this.scenarioData).subscribe(
-            data => {
-                    console.log(data);                   
-                    },
-            err => console.error(err),
-            () => {                  
-                    //myExtObjectForTraining.createTrainingSuccess();
-                    alert('Scenario added successfully..');
-                    console.log('scenario added successfully..');
-                    //this.viewTraining();
-                    
-            }
-        );
-    //}
+    );
   }
   
   
